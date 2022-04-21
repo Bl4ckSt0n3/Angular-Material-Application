@@ -20,18 +20,18 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DashComponent } from './pages/dash/dash.component';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { LayoutModule } from '@angular/cdk/layout'; 
+import { LayoutModule } from '@angular/cdk/layout';
+import { CardsComponent } from './pages/cards/cards.component'; 
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent,
-    DashComponent
+    DashComponent,
+    CardsComponent
   ],
   imports: [
     BrowserModule,

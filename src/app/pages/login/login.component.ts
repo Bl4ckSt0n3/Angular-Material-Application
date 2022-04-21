@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
-import { first } from 'rxjs';
+import { first, Observable } from 'rxjs';
 import { LoginService } from 'src/app/services/login.service';
 
 
@@ -35,17 +35,28 @@ export class LoginComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher();
 
-  login(): void {
+  login() {
     // if(this.loginForm.invalid) {}
     this.loginService.login(this.loginForm.get("emailFormControl")?.value, this.loginForm.get("passwordFormControl")?.value).pipe(first())
     .subscribe(
-      (success: any) => {
-        console.log("loggedIn", success);
-        this.router.navigate(['/'])
-      },
-      (error: any) => {
-        console.log("error")
+      {
+        next: (success: any) => {
+          console.log(success);
+          this.router.navigate(['/']);
+        },
+        error: (e) => {
+          console.log(e);
+        },
+        complete: () => console.log("done !"),
       }
+      
+      // (success: any) => {
+      //   console.log("loggedIn", success);
+      //   this.router.navigate(['/'])
+      // },
+      // (error: any) => {
+      //   console.log("error")
+      // }
     )
   }
   constructor(
