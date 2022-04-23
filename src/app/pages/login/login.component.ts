@@ -23,7 +23,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 export class LoginComponent implements OnInit {
 
-
+  hide = true;
   loginForm = new FormGroup({
     emailFormControl: new FormControl('', [Validators.required, Validators.email]),
     passwordFormControl: new FormControl('', [Validators.required, Validators.minLength(8)])

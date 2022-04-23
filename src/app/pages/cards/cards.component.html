@@ -1,5 +1,5 @@
-<div class="container">
-    <mat-grid-list cols="4" rowHeight="500px">
+<!-- <div class="container">
+    <mat-grid-list [cols]="breakpoint" rowHeight="550px" (window:resize)="onResize($event)">
         <mat-grid-tile *ngFor="let index of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
             <mat-card class="dashboard-card">
                 <mat-card-header>
@@ -21,74 +21,48 @@
                 </mat-card-actions>
               </mat-card>
         </mat-grid-tile>
-        <!-- <mat-grid-tile >
-            <mat-card class="dashboard-card">
-                <mat-card-header>
-                  <div mat-card-avatar class="example-header-image"></div>
-                  <mat-card-title>Penguin</mat-card-title>
-                  <mat-card-subtitle>Penguin Product</mat-card-subtitle>
-                </mat-card-header>
-                <img mat-card-image src="../../../assets/images/penguin.png" alt="penguin">
-                <mat-card-content class="dashboard-card-content">
-                  <p>
-                    The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                    A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                    bred for hunting.
-                  </p>
-                </mat-card-content>
-                <mat-card-actions>
-                  <button mat-button>LIKE</button>
-                  <button mat-button>SHARE</button>
-                </mat-card-actions>
-              </mat-card>
-        </mat-grid-tile>
-        <mat-grid-tile >
-            <mat-card class="dashboard-card">
-                <mat-card-header>
-                  <div mat-card-avatar class="example-header-image"></div>
-                  <mat-card-title>Penguin</mat-card-title>
-                  <mat-card-subtitle>Penguin Product</mat-card-subtitle>
-                </mat-card-header>
-                <img mat-card-image src="../../../assets/images/penguin.png" alt="penguin">
-                <mat-card-content class="dashboard-card-content">
-                  <p>
-                    The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                    A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                    bred for hunting.
-                  </p>
-                </mat-card-content>
-                <mat-card-actions>
-                  <button mat-button>LIKE</button>
-                  <button mat-button>SHARE</button>
-                </mat-card-actions>
-              </mat-card>
-        </mat-grid-tile>
-        <mat-grid-tile >
-            <mat-card class="dashboard-card">
-                <mat-card-header>
-                  <div mat-card-avatar class="example-header-image"></div>
-                  <mat-card-title>Penguin</mat-card-title>
-                  <mat-card-subtitle>Penguin Product</mat-card-subtitle>
-                </mat-card-header>
-                <img mat-card-image src="../../../assets/images/penguin.png" alt="penguin">
-                <mat-card-content class="dashboard-card-content">
-                  <p>
-                    The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                    A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                    bred for hunting.
-                  </p>
-                </mat-card-content>
-                <mat-card-actions>
-                  <button mat-button>LIKE</button>
-                  <button mat-button>SHARE</button>
-                </mat-card-actions>
-              </mat-card>
-        </mat-grid-tile> -->
     </mat-grid-list>
-</div>
-
-<!-- <div class="content">
-    <div fxLayout="row wrap" fxLayoutGap="16px grid">
-
-    </div>
 </div> -->
+
+<div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <h4>Product Selection</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Select</mat-label>
+      <mat-select>
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <h4>Sort</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Select</mat-label>
+      <mat-select>
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let srt of sort" [value]="srt">{{srt}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div fxLayout="row wrap" fxLayoutGap="16px grid" > <!--'grid' attribute applies space like reverse negative margin-->
+    <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let index of [1, 2, 3, 4, 5, 6, 7, 8, 9]"> <!--fxFlex="25%" gives column like 'cols' attribute-->
+      <mat-card class="mat-elevation-z4" >
+        <mat-card-header>
+          <mat-card-title>Penguin {{ index }}</mat-card-title>
+          <mat-card-subtitle>Penguin Product {{ index }}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="../../../assets/images/penguin.png" alt="penguin">
+        <mat-card-content>
+          <p>
+            This is a smart penguin. For more info please click on it !
+          </p>
+          <h3><strong>25<sup>.90</sup>$</strong></h3>
+        </mat-card-content>
+        <mat-card-actions>
+          <!-- <button mat-button>LIKE</button> -->
+          <button mat-button>ADD TO BASKET</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
