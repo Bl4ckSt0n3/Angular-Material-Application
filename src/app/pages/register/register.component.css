@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    justify-content: center;
+    /*
+    align-items: center; */
+    /* background-image: url('../../../assets/images/artistik-dag-manzarasi-duvar-kagidi-2560x1600_7.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    height: 100%;*/
+}
+
+.example-form {
+    min-width: 100px;
+    max-width: 500px;
+    width: 100%;
+}
+  
+.example-full-width {
+  width: 100%;
+  margin-top: 15px;
+}
+
+/* .password{
+  margin-top: 25px;
+}
+.email {
+  margin-top: 25px;
+} */
+
+
+/* .mat-form-field {
+  width: 100%;
+  min-width: 250px;
+} */
+

@@ -25,44 +25,101 @@
 </div> -->
 
 <div class="content">
-  <div fxLayout="row wrap" fxLayoutGap="16px grid">
-    <h4>Product Selection</h4>
-    <mat-form-field appearance="fill">
-      <mat-label>Select</mat-label>
-      <mat-select>
-        <mat-option>None</mat-option>
-        <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <h4>Sort</h4>
-    <mat-form-field appearance="fill">
-      <mat-label>Select</mat-label>
-      <mat-select>
-        <mat-option>None</mat-option>
-        <mat-option *ngFor="let srt of sort" [value]="srt">{{srt}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-  <div fxLayout="row wrap" fxLayoutGap="16px grid" > <!--'grid' attribute applies space like reverse negative margin-->
-    <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let index of [1, 2, 3, 4, 5, 6, 7, 8, 9]"> <!--fxFlex="25%" gives column like 'cols' attribute-->
+  <mat-card>
+    <div fxLayout="row wrap" >
+      <div fxLayout="row" fxLayoutAlign="start center" fxFlex="50" fxFlex.xs="100%" fxFlex.sm="100%" style="height: 20px; margin-top: 10px;">
+        <mat-card-title>
+          <button mat-button [matMenuTriggerFor]="menu">
+            <mat-icon class="arrow-right" >keyboard_arrow_right</mat-icon>  {{categoryModel}}
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+          </mat-menu>
+          
+        </mat-card-title>
+      </div>
+      <div fxLayout="row" fxFlex="35" fxFlex.xs="100%" fxFlex.sm="100%" fxLayoutAlign="end center" style="height: 20px; margin-top: 10px;">
+        <mat-form-field appearance="legacy" >
+          <mat-label>Sort</mat-label>
+          <mat-select>
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let srt of sort" [value]="srt">{{ srt }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxFlex="15" fxFlex.xs="100%" fxFlex.sm="100%" fxLayoutAlign="end center" style="height: 20px; margin-top: 8px;">
+        <button mat-button class="view-module-button">
+          <mat-icon (click)="changeGridColumn(4)" >view_module</mat-icon>
+        </button>
+        <button mat-button class="view-comfy-button">
+          <mat-icon (click)="changeGridColumn(5)">view_comfy</mat-icon>
+        </button>
+      </div>
+    </div>
+    
+  </mat-card>
+  <!-- <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="100%">
+      <mat-card style="height: 25%;">
+        <mat-card-content style="margin-bottom: 65px;">
+          <div fxLayout="row wrap" fxLayoutGap="16px grid">
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex="50" fxFlex.xs="100%" fxFlex.sm="100%">
+              <mat-card-title><mat-icon class="arrow-right">keyboard_arrow_right</mat-icon>All Products</mat-card-title>
+            </div>
+            <div fxLayout="row" fxFlex fxFlex.xs="100%" fxFlex.sm="100%" fxLayoutAlign="end center">
+              <mat-form-field appearance="legacy" style="width: 80px;">
+                <mat-label>Order</mat-label>
+                <mat-select>
+                  <mat-option>None</mat-option>
+                  <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxLayout="row" fxFlex fxFlex.xs="100%" fxFlex.sm="100%" fxLayoutAlign="center">
+              <mat-form-field appearance="legacy" style="width: 80px;">
+                <mat-label>Category</mat-label>
+                <mat-select>
+                  <mat-option>None</mat-option>
+                  <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div> -->
+  <div  fxLayout="row wrap" fxLayoutGap="16px grid"> <!--'grid' attribute applies space like reverse negative margin-->
+    <div class="cards" [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let item of obs | async; let i=index;"> <!--fxFlex="25%" gives column like 'cols' attribute-->
       <mat-card class="mat-elevation-z4" >
         <mat-card-header>
-          <mat-card-title>Penguin {{ index }}</mat-card-title>
-          <mat-card-subtitle>Penguin Product {{ index }}</mat-card-subtitle>
+          <mat-card-title>Penguin {{ i }}</mat-card-title>
+          <mat-card-subtitle>{{ item.title }}</mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image src="../../../assets/images/penguin.png" alt="penguin">
         <mat-card-content>
           <p>
-            This is a smart penguin. For more info please click on it !
+            {{ item.text }}
           </p>
           <h3><strong>25<sup>.90</sup>$</strong></h3>
         </mat-card-content>
-        <mat-card-actions>
-          <!-- <button mat-button>LIKE</button> -->
-          <button mat-button>ADD TO BASKET</button>
+        <mat-divider inset></mat-divider>
+        <mat-card-actions>          
+          <div class="example-button-container" fxLayoutAlign="end center">
+            <button mat-button  aria-label="Example icon button with a filter list icon">
+              <mat-icon>add_shopping_cart</mat-icon>
+            </button>
+          </div>
         </mat-card-actions>
       </mat-card>
     </div>
   </div>
+  <mat-paginator 
+  [pageSizeOptions]="[5, 10, 25, 100]"
+  [pageSize]="20"
+  >
+  </mat-paginator>
 </div>
+

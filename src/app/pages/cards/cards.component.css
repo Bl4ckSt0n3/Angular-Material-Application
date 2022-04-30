@@ -39,9 +39,24 @@ mat-card {
     align-items: center;
     width: 70%;
 }
+.cards {
+    margin-top: 10px;
+}
 
-mat-card-actions {
-    text-align: center;
+/* mat-card-actions {
+    text-align: end;
+} */
+mat-card-title > mat-button, .arrow-right {
+    font-size: 18px;
+}
+::ng-deep .mat-form-field-underline {
+    display: none;
+}
+
+@media only screen and (max-width: 900px) {
+    .content {
+        width: 90%;
+    }
 }
 
 /* mat-card img {

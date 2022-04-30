@@ -1,37 +1,70 @@
-<mat-toolbar color="primary">
-    <mat-toolbar-row>
-        <span class="title">CCG Batiments</span>
-        <span class="menu-spacer"></span>
-        <button mat-icon-button (click)="sidenav.toggle()" class="example-icon" aria-label="Example icon-button with menu icon" fxShow="true" fxHide.gt-sm="true">
-            <mat-icon>menu</mat-icon>
-        </button>
-        <div fxShow="true" fxHide.lt-md="true">
-            <a href="#" mat-button>Home</a>
-            <a href="#" mat-button>Contact</a>
-            <a href="#" mat-button>Products</a>
-            <button mat-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (mouseover)="menuTrigger.openMenu()">Options</button>
+<mat-sidenav-container class="side-menu" fxFlexFill autosize>
+    <mat-sidenav #sidenav fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true">
+      <mat-nav-list>
+        <button (click)="sidenav.toggle()" mat-button style="width: 100%;"><mat-icon>clear</mat-icon></button>
+        <a href="#" mat-list-item>Home</a>
+        <a mat-list-item [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger">Options<mat-icon>expand_more</mat-icon></a>
             <mat-menu #menu="matMenu" [overlapTrigger]="false">
-                <span (mouseleave)="menuTrigger.closeMenu()">
+                <span>
                     <button mat-menu-item>Orders</button>
                     <button mat-menu-item>Basket</button>
                     <button mat-menu-item>Settings</button>
                     <button mat-menu-item>Profile</button>
                 </span>
             </mat-menu>
-            <a href="#" mat-button>Logout</a>
-        </div>
-    </mat-toolbar-row>
-</mat-toolbar>
-
-<mat-sidenav-container class="side-menu" fxFlexFill>
-    <mat-sidenav #sidenav fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true">
-      <mat-nav-list>
-        <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
-        <a href="#" mat-list-item>Menu Item 1</a>
-        <a href="#" mat-list-item>Menu Item 2</a>
-        <a href="#" mat-list-item>Menu Item 3</a>
+        <a href="#" mat-list-item>Contact</a>
+        <a href="#" mat-list-item>Products</a>
+        <a href="#" mat-list-item>Logout</a>
       </mat-nav-list>
     </mat-sidenav>
-    <router-outlet></router-outlet>
+    <mat-sidenav-content>
+        <!-- <mat-toolbar class="toolbar-head"> 
+            <mat-toolbar-row>
+                <span class="title">CCG Batiments</span>
+            </mat-toolbar-row>
+        </mat-toolbar> -->
+        <mat-toolbar color="primary" style="height: 10%;"> <!--style="background-color: #1976D2;"#2196F3-->
+            <mat-toolbar-row>
+                <span class="title">CCG Batiments</span>
+                <span class="menu-spacer"></span>
+                <button mat-icon-button (click)="sidenav.toggle()" class="example-icon" aria-label="Example icon-button with menu icon" fxShow="true" fxHide.gt-sm="true">
+                    <mat-icon>menu</mat-icon>
+                </button>
+                <div class="menu" fxShow="true" fxHide.lt-md="true">
+                    <a href="#" mat-button>
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" style="font-size: 20px;">home</mat-icon>Home
+                    </a>
+                    <a href="#" mat-button>Login/Register</a>
+                    <a href="#" mat-button>Contact</a>
+                    <a href="#" mat-button>Products</a>
+                    <!-- <button mat-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (mouseenter)="menuTrigger.openMenu()">Options</button>
+                    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+                        <span (mouseleave)="menuTrigger.closeMenu()">
+                            <button mat-menu-item>Orders</button>
+                            <button mat-menu-item>Basket</button>
+                            <button mat-menu-item>Settings</button>
+                            <button mat-menu-item>Profile</button>
+                        </span>
+                    </mat-menu>
+                    <a href="#" mat-button>Logout</a> -->
+                    <button mat-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger">
+                        Options <mat-icon>expand_more</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+                        <span>
+                            <button mat-menu-item>Orders</button>
+                            <button mat-menu-item>Basket</button>
+                            <button mat-menu-item>Settings</button>
+                            <button mat-menu-item>Profile</button>
+                        </span>
+                    </mat-menu>
+                    <a href="#" mat-button><span class='material-icons'>logout</span> Logout</a>
+                </div>
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+    
 </mat-sidenav-container>
 
+  

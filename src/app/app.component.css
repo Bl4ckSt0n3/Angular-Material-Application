@@ -1,7 +1,10 @@
 .menu-spacer {
     flex: 1 1 auto;
 }
-mat-sidenav-container {
-    height: 92% !important;
-    min-height: 92% !important;
+.title, .menu{
+    margin-top: 30px;
 }
+/* mat-sidenav-container {
+    height: 80% !important;
+    min-height: 85% !important;
+} */

@@ -1,0 +1,119 @@
+<div class="container">
+    <div fxLayout="row wrap">
+        <div fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="100%">
+
+            <form [formGroup]="registerForm" class="example-form">
+                <h2>Create Account</h2>
+                <mat-form-field class="example-full-width email" appearance="fill">
+                    <mat-label>
+                        Email
+                    </mat-label>
+                    <input type="email" matInput formControlName="emailFormControl" [errorStateMatcher]="matcher" placeholder="Ex. pat@example.com">
+                    <mat-hint></mat-hint>
+                    <mat-error *ngIf="f['emailFormControl'].hasError('email') && !f['emailFormControl'].hasError('required')">
+                        Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="f['emailFormControl'].hasError('required')">
+                        Email is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                
+                <mat-form-field class="example-full-width password" appearance="fill">
+                    <mat-label>
+                        Password
+                    </mat-label>
+                    <input type="password" matInput [type]="hide ? 'password' : 'text'" formControlName="passwordFormControl" [errorStateMatcher]="matcher" placeholder="password">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-hint></mat-hint>
+                    <mat-error *ngIf="f['passwordFormControl'].hasError('minlength') && !f['passwordFormControl'].hasError('required')">
+                        Password should be longer than 8 characters.
+                    </mat-error>
+                    <mat-error *ngIf="f['passwordFormControl'].hasError('required')">
+                        Password is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width email" appearance="fill">
+                    <mat-label>
+                        First Name
+                    </mat-label>
+                    <input type="email" matInput formControlName="firstNameFormControl" [errorStateMatcher]="matcher" placeholder="firstname">
+                    <mat-hint></mat-hint>
+                    <mat-error *ngIf="f['firstNameFormControl'].hasError('required')">
+                        First Name is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                
+                <mat-form-field class="example-full-width password" appearance="fill">
+                    <mat-label>
+                        Last Name
+                    </mat-label>
+                    <input type="text" matInput formControlName="lastNameFormControl" [errorStateMatcher]="matcher" placeholder="lastname">
+                    <mat-hint></mat-hint>
+                    <mat-error *ngIf="f['lastNameFormControl'].hasError('required')">
+                        Last Name is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Phone</mat-label>
+                    <input matInput type="text" placeholder="+1-999-999-999">
+                </mat-form-field>
+                
+                <table class="example-full-width" cellspacing="0">
+                    <tr>
+                        <td>
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Country</mat-label>
+                                <mat-select>
+                                    <mat-option>None</mat-option>
+                                    <mat-option *ngFor="let country of countries" [value]="country">{{country}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>City</mat-label>
+                                <input matInput type="text">
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>State</mat-label>
+                                <input matInput>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Zip</mat-label>
+                                <input matInput>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
+                <div fxLayout="row wrap">
+                    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="50" fxFlex.xs="100%" fxFlex.sm="100%">
+                        <button mat-raised-button color="warn">Cancel</button>
+                    </div>
+                    <div fxLayout="row" fxFlex fxFlex.xs="100%" fxFlex.sm="100%" fxLayoutAlign="end center">
+                        <button mat-button type="submit" color="primary" (click)="register()" style="justify-self: end;">Register</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+  
+<!-- <div *ngFor="let item of currentItemsToShow, let i=index;">Hello {{item.name}}</div>
+<mat-paginator
+   (page)="onPageChange($event)" 
+   [length]="100"
+   [pageSize]="10"
+   [pageSizeOptions]="[5, 10, 25, 100]"
+   aria-label="Select page">
+</mat-paginator> -->

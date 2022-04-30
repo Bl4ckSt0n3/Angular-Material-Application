@@ -2,6 +2,11 @@
     display: flex;
     /* justify-content: center;
     align-items: center; */
+    /* background-image: url('../../../assets/images/artistik-dag-manzarasi-duvar-kagidi-2560x1600_7.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 93.3%; */
 }
 
 .container .formdiv {
@@ -9,7 +14,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 15rem;
 }
 
 .example-form {
@@ -28,11 +32,24 @@
 .email {
   margin-top: 25px;
 }
+.forgot-password {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
+  
+}
+/* .forgot-password > a {
+  text-decoration: none;
+} */
 
 .button {
   display: flex;
   justify-content: flex-end;
   margin-top: 15px;
+}
+
+.button > .mat-button {
+  font-size: 16px;
 }
 
 .mat-form-field {
@@ -44,4 +61,8 @@ mat-card-title,
 mat-card-content {
   display: flex;
   justify-content: center;
+}
+
+a{
+  text-decoration: none;
 }
