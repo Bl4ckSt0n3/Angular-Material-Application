@@ -184,7 +184,7 @@ export class CardsComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   obs!: Observable<any>;
   dataSource: MatTableDataSource<Card> = new MatTableDataSource<Card>(DATA);
-  gridColumns: number = 5;
+  gridColumns: number = 4;
   categoryModel: string = "All Product"
   options: string[] = [
     "Pipe",
@@ -221,6 +221,7 @@ export class CardsComponent implements OnInit, OnDestroy {
   // https://www.spurtcommerce.com/angularjs-shopping-ecommerce-site-features
   // https://stackblitz.com/edit/flex-layout-angular-material-gxew4y?embed=1&file=app/app.component.html
   // https://dev.to/codingcatdev/angular-material-router-outlet-3292
+  // https://blog.thoughtram.io/angular/2017/05/23/custom-themes-with-angular-material.html
   ngOnInit(): void {
     // this.currentItemsToShow = this.items;
     this.changeDetectorRef.detectChanges();

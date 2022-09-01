@@ -27,7 +27,7 @@
 }
 
 .password{
-  margin-top: 25px;
+  margin-top: 15px;
 }
 .email {
   margin-top: 25px;
@@ -65,4 +65,8 @@ mat-card-content {
 
 a{
   text-decoration: none;
+}
+
+.mat-card {
+  top: 20%;
 }

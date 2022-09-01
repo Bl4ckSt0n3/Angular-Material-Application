@@ -59,6 +59,9 @@ export class LoginComponent implements OnInit {
       // }
     )
   }
+  redirect(url: string) {
+    this.router.navigate([url]);
+  }
   constructor(
     private loginService: LoginService,
     private router: Router

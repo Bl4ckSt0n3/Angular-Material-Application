@@ -9,7 +9,7 @@
                             Email
                         </mat-label>
                         <input type="email" matInput formControlName="emailFormControl" [errorStateMatcher]="matcher" placeholder="Ex. pat@example.com">
-                        <mat-hint>Errors appear instantly!</mat-hint>
+                        <mat-hint></mat-hint>
                         <mat-error *ngIf="f['emailFormControl'].hasError('email') && !f['emailFormControl'].hasError('required')">
                             Please enter a valid email address
                         </mat-error>
@@ -25,7 +25,7 @@
                         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
-                        <mat-hint>Errors appear instantly!</mat-hint>
+                        <mat-hint></mat-hint>
                         <mat-error *ngIf="f['passwordFormControl'].hasError('minlength') && !f['passwordFormControl'].hasError('required')">
                             Password should be longer than 8 characters.
                         </mat-error>
@@ -38,15 +38,14 @@
                         <a href="#">forgot password ?</a>
                     </div>
                     <div class="button">
-                        <button mat-raised-button type="submit" color="primary" (click)="login()" style="width: 100%;"><span class="material-icons">login</span>&nbsp;Login</button>
+                        <button mat-raised-button type="submit" color="primary" (click)="login()" style="width: 100%; font-size: 16px;"><span class="material-icons">login</span>&nbsp;Login</button>
                     </div>
-                    <h4 fxLayoutAlign="center">OR</h4>
+                    <h5 fxLayoutAlign="center">OR</h5>
                     <div class="signup" fxLayoutAlign="center">
-                        <button mat-stroked-button color="primary">Signup</button>
+                        <button mat-stroked-button color="primary" (click)="redirect('register')">Sign up</button>
                     </div>
                 </form>
             </mat-card-content>
-            
         </mat-card>
     </div>
 </div>
